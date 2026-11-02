@@ -1,0 +1,7 @@
+import React from 'react';
+import {Link} from 'react-router-dom';
+import {ArrowRight,Quote,Heart} from 'lucide-react';
+import {PageHero} from '../components/Layout';
+import {useStore} from '../lib/store';
+import {Reveal,Stars,SectionHead} from '../components/UI';
+export default function Reviews(){const {testimonials}=useStore();return <><PageHero eyebrow="THE PEOPLE, THE PLACES" title={<>Traveller <em>stories.</em></>} subtitle="A glimpse of how meaningful travel memories come to life." image="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1600&q=85"/><section className="container section-pad reviews-page"><SectionHead eyebrow="TRAVEL IN THEIR WORDS" title="Every journey has a story." sub="The reviews below are illustrative content for the design demonstration, not verified customer endorsements."/><div className="reviews-page-grid">{testimonials.map((r,i)=><Reveal className="review-story" key={r.id}><Quote size={28}/><Stars rating={r.rating}/><p>“{r.text}”</p><div className="review-person"><span>{r.name[0]}</span><div><strong>{r.name}</strong><small>{r.place} · Sample review</small></div></div></Reveal>)}</div></section><section className="light-callout"><div className="container"><div><span className="eyebrow">READY TO MAKE MEMORIES?</span><h2>Your travel story starts here.</h2><p>Explore our example itineraries and start planning.</p></div><Link to="/packages" className="btn btn-teal">Explore trips <ArrowRight size={16}/></Link></div></section></>}
